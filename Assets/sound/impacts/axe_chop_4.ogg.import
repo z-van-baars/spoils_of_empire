@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/axe_chop_4.ogg-5dbd12e80c8e7fef6aea34d73440babb.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/impacts/axe_chop_4.ogg"
+dest_files=[ "res://.import/axe_chop_4.ogg-5dbd12e80c8e7fef6aea34d73440babb.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

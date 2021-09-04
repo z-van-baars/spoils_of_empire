@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hammer_tink3.ogg-f9a5177d3eccba3f191b68f937ef59b3.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/impacts/hammer_tink3.ogg"
+dest_files=[ "res://.import/hammer_tink3.ogg-f9a5177d3eccba3f191b68f937ef59b3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

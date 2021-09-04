@@ -3,14 +3,13 @@
 [ext_resource path="res://Assets/Crop_Spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Drop.gd" type="Script" id=2]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
-flags_unshaded = true
 flags_albedo_tex_force_srgb = true
 params_billboard_mode = 2
 params_billboard_keep_scale = true
 
-[sub_resource type="SphereShape" id=1]
+[sub_resource type="SphereShape" id=2]
 radius = 0.35
 
 [sub_resource type="SphereShape" id=3]
@@ -26,16 +25,19 @@ script = ExtResource( 2 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
-material_override = SubResource( 4 )
+material_override = SubResource( 1 )
+shaded = true
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 144, 16, 16 )
 
 [node name="PickupArea" type="Area" parent="."]
+collision_layer = 32
+collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="PickupArea"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )

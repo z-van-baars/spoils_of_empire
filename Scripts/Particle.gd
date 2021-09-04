@@ -7,6 +7,7 @@ func _ready():
 		Tools.rng.randf_range(-4, 4))
 	add_to_group("particles")
 	$Timer.start(Tools.rng.randf_range(1.0, 2.5))
+	scale *= Tools.rng.randf_range(0.25, 1.5)
 
 func _on_Timer_timeout():
 	kill()

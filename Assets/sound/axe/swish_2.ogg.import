@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/swish_2.ogg-87b799357a4ca0a274c31d849ce68997.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/axe/swish_2.ogg"
+dest_files=[ "res://.import/swish_2.ogg-87b799357a4ca0a274c31d849ce68997.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

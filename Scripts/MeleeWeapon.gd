@@ -11,7 +11,7 @@ func fire():
 	raycast.force_raycast_update()
 	
 	var bodies = area.get_overlapping_bodies()
-
+	var areas = area.get_overlapping_areas()
 	for body in bodies:
 		if body == player:
 			continue
@@ -26,7 +26,7 @@ func fire():
 		spawn_particles()
 
 func spawn_particles():
-	for _pp in range(Tools.rng.randi_range(3, 8)):
+	for _pp in range(Tools.rng.randi_range(2, 4)):
 		var new_particle = particle_scn.instance()
 		world_node.add_child(new_particle)
 		new_particle.translation = raycast.get_collision_point() + raycast.get_collision_normal()

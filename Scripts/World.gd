@@ -6,7 +6,7 @@ onready var particle_scn = preload("res://Scenes/Particle.tscn")
 
 func _ready():
 	$Drop._ready()
-	generate_starfield()
+	# generate_starfield()
 
 func is_player(entity):
 	return entity == player

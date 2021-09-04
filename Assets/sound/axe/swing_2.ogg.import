@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/swing_2.ogg-6582f2752964fc2dda772b6cc5e443f8.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/axe/swing_2.ogg"
+dest_files=[ "res://.import/swing_2.ogg-6582f2752964fc2dda772b6cc5e443f8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

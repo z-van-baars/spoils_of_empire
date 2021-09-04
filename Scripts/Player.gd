@@ -81,13 +81,19 @@ func process_weapons(delta):
 			Tools.r_choice(sounds["bolter_fire"]).play()
 			$RotationHelper/GunFirePoints/ProjectilePoint.fire()
 		Weapons.WeaponTypes.Shotgun:
-			anim_player.play("shotgun fire")
+			if weapon_sprite.is_playing():
+				return
+			weapon_sprite.play(Weapons.weapon_names[weapon_slot] + "attack")
+			weapon_sprite.set_frame(0)
 			Tools.r_choice(sounds["bolter_fire"]).play()
 			$RotationHelper/GunFirePoints/HitscanPoint.fire()
 			shooting = false
 		Weapons.WeaponTypes.Axe:
+			if anim_player.is_playing():
+				return
 			anim_player.play("axe swing")
 			$MeleeTimer.start(0.05)
+			shooting = false
 
 func process_input(delta):
 
@@ -171,6 +177,7 @@ func _input(event):
 		rotation_helper.rotation_degrees = camera_rot
 	elif event.is_action_pressed("shoot"):
 		shooting = true
+		print("shootah")
 	elif event.is_action_released("shoot"):
 		shooting = false
 
@@ -210,7 +217,7 @@ func bolter_swap():
 
 func shotgun_swap():
 	$CanvasLayer/Control/ShotgunSprite.show()
-	weapon_sprite = $CanvasLayer/Control/BolterSprite
+	weapon_sprite = $CanvasLayer/Control/ShotgunSprite
 	
 func axe_swap():
 	$CanvasLayer/Control/AxeSprite.show()
@@ -231,3 +238,8 @@ func _on_AnimatedSprite_animation_finished():
 func _on_MeleeTimer_timeout():
 	$RotationHelper/GunFirePoints/MeleePoint.fire()
 
+
+
+func _on_WeaponSprite_animation_finished():
+	weapon_sprite.set_frame(0)
+	weapon_sprite.stop()
