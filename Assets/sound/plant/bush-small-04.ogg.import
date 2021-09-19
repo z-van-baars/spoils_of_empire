@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bush-small-04.ogg-b193181c765ad32f4b86fe2fc95dd2e8.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/plant/bush-small-04.ogg"
+dest_files=[ "res://.import/bush-small-04.ogg-b193181c765ad32f4b86fe2fc95dd2e8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

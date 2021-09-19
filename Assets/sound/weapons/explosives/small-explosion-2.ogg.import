@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/small-explosion-2.ogg-c525039a89b7260072c8ccbaaaf9c770.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/weapons/explosives/small-explosion-2.ogg"
+dest_files=[ "res://.import/small-explosion-2.ogg-c525039a89b7260072c8ccbaaaf9c770.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

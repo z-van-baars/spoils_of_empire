@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/silo-doors.ogg-8b70199432284060615d0dc93f867f07.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/effects/silo-doors.ogg"
+dest_files=[ "res://.import/silo-doors.ogg-8b70199432284060615d0dc93f867f07.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

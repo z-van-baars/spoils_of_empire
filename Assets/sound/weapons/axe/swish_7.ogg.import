@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/swish_7.ogg-fc77dc78678939d9537a5d191a8baaca.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/weapons/axe/swish_7.ogg"
+dest_files=[ "res://.import/swish_7.ogg-fc77dc78678939d9537a5d191a8baaca.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

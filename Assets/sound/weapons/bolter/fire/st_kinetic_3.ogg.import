@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/st_kinetic_3.ogg-8dadccafa5b1ad9b5a68159af10bcf48.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/weapons/bolter/fire/st_kinetic_3.ogg"
+dest_files=[ "res://.import/st_kinetic_3.ogg-8dadccafa5b1ad9b5a68159af10bcf48.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

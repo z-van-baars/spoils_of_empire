@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/armor_light.ogg-267c5e056153b8c39c30e4e2f7042dec.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/ui/armor_light.ogg"
+dest_files=[ "res://.import/armor_light.ogg-267c5e056153b8c39c30e4e2f7042dec.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

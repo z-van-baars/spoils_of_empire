@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/light-gunshot-7.ogg-e0ff85ad287e2b385eba034918660866.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/weapons/pistol/fire/light-gunshot-7.ogg"
+dest_files=[ "res://.import/light-gunshot-7.ogg-e0ff85ad287e2b385eba034918660866.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

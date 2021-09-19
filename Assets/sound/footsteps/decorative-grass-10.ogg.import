@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/decorative-grass-10.ogg-a1c6812bcff735bda1025cdb82e746a9.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/footsteps/decorative-grass-10.ogg"
+dest_files=[ "res://.import/decorative-grass-10.ogg-a1c6812bcff735bda1025cdb82e746a9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

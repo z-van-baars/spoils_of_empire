@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/decorative-mud-07.ogg-73e7620341a700e6d4d8e6e8eb04b7ca.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/footsteps/decorative-mud-07.ogg"
+dest_files=[ "res://.import/decorative-mud-07.ogg-73e7620341a700e6d4d8e6e8eb04b7ca.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

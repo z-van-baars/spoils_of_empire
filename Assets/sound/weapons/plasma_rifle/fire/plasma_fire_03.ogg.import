@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/plasma_fire_03.ogg-743192a8fb74153346a41b3c98103019.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/weapons/plasma_rifle/fire/plasma_fire_03.ogg"
+dest_files=[ "res://.import/plasma_fire_03.ogg-743192a8fb74153346a41b3c98103019.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

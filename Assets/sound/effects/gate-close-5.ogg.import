@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/gate-close-5.ogg-5dca7474b9c06e64c5c292c276e15b2e.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/effects/gate-close-5.ogg"
+dest_files=[ "res://.import/gate-close-5.ogg-5dca7474b9c06e64c5c292c276e15b2e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/character-corpse-close.ogg-3ddf9dbd54d71b14d3cc82aebaf8489b.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/ui/character-corpse-close.ogg"
+dest_files=[ "res://.import/character-corpse-close.ogg-3ddf9dbd54d71b14d3cc82aebaf8489b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

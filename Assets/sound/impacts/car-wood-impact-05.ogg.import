@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/car-wood-impact-05.ogg-4af329a7f7f218e542630d66ce68d07c.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/impacts/car-wood-impact-05.ogg"
+dest_files=[ "res://.import/car-wood-impact-05.ogg-4af329a7f7f218e542630d66ce68d07c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

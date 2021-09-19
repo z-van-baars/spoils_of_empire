@@ -1,8 +1,12 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=46 format=2]
 
+[ext_resource path="res://Scenes/Prop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Drop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/art/textures/metal_1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/art/textures/metal_2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/24e7957ab9a8228.png" type="Texture" id=7]
 
 [sub_resource type="ProceduralSky" id=1]
 radiance_size = 4
@@ -20,6 +24,9 @@ background_sky = SubResource( 1 )
 background_canvas_max_layer = 2
 ambient_light_color = Color( 0.992157, 0.968627, 0.803922, 1 )
 ambient_light_sky_contribution = 0.6
+dof_blur_far_distance = 75.0
+dof_blur_far_transition = 10.0
+glow_enabled = true
 
 [sub_resource type="PlaneMesh" id=3]
 size = Vector2( 200, 200 )
@@ -29,38 +36,106 @@ albedo_color = Color( 0.698039, 0.658824, 0.890196, 1 )
 
 [sub_resource type="BoxShape" id=5]
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="PlaneMesh" id=6]
+size = Vector2( 100, 100 )
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="SpatialMaterial" id=7]
+flags_albedo_tex_force_srgb = true
+albedo_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+albedo_texture = ExtResource( 5 )
+uv1_scale = Vector3( 22, 22, 1 )
 
-[sub_resource type="SpatialMaterial" id=8]
-albedo_color = Color( 0.207843, 0.0862745, 0.333333, 1 )
+[sub_resource type="BoxShape" id=8]
 
-[sub_resource type="BoxShape" id=9]
-extents = Vector3( 1.50228, 3.97978, 1.04967 )
+[sub_resource type="SpatialMaterial" id=9]
+flags_albedo_tex_force_srgb = true
+albedo_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+albedo_texture = ExtResource( 6 )
+uv1_scale = Vector3( 22, 22, 1 )
 
-[sub_resource type="CubeMesh" id=10]
-size = Vector3( 3, 8, 2 )
+[sub_resource type="BoxShape" id=10]
 
-[sub_resource type="SpatialMaterial" id=11]
-albedo_color = Color( 0.333333, 0.113725, 0.32549, 1 )
+[sub_resource type="PlaneMesh" id=11]
+size = Vector2( 90, 40 )
 
-[sub_resource type="BoxShape" id=12]
-extents = Vector3( 1.50228, 3.97978, 3.48658 )
+[sub_resource type="SpatialMaterial" id=12]
+flags_albedo_tex_force_srgb = true
+albedo_color = Color( 0.372549, 0.368627, 0.431373, 1 )
 
-[sub_resource type="CubeMesh" id=13]
-size = Vector3( 3, 8, 7 )
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 1, 1, 0.350198 )
+
+[sub_resource type="PlaneMesh" id=14]
+size = Vector2( 100, 40 )
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 0.372549, 0.368627, 0.431373, 1 )
+
+[sub_resource type="PlaneMesh" id=16]
+size = Vector2( 100, 20 )
 
 [sub_resource type="SpatialMaterial" id=17]
+albedo_color = Color( 0.521569, 0.521569, 0.521569, 1 )
+uv1_scale = Vector3( 4, 1, 1 )
+
+[sub_resource type="PlaneMesh" id=18]
+size = Vector2( 100, 100 )
+
+[sub_resource type="SpatialMaterial" id=19]
+albedo_color = Color( 0.317647, 0.317647, 0.32549, 1 )
+
+[sub_resource type="BoxShape" id=20]
+
+[sub_resource type="CubeMesh" id=21]
+size = Vector3( 20, 2, 40 )
+
+[sub_resource type="SpatialMaterial" id=22]
+albedo_color = Color( 0.184314, 0.184314, 0.184314, 1 )
+
+[sub_resource type="BoxShape" id=23]
+extents = Vector3( 0.205176, 1, 0.403288 )
+
+[sub_resource type="BoxShape" id=24]
+extents = Vector3( 0.19923, 1, 0.399848 )
+
+[sub_resource type="BoxShape" id=25]
+
+[sub_resource type="CubeMesh" id=26]
+
+[sub_resource type="SpatialMaterial" id=27]
+albedo_color = Color( 0.207843, 0.0862745, 0.333333, 1 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 1.48834, 3.97978, 1.02704 )
+
+[sub_resource type="CubeMesh" id=29]
+size = Vector3( 3, 8, 2 )
+
+[sub_resource type="SpatialMaterial" id=30]
+flags_transparent = true
+albedo_color = Color( 0.333333, 0.113725, 0.32549, 0.407843 )
+
+[sub_resource type="BoxShape" id=38]
+extents = Vector3( 1.48556, 3.97978, 0.936584 )
+
+[sub_resource type="BoxShape" id=31]
+extents = Vector3( 1.50228, 3.97978, 3.48658 )
+
+[sub_resource type="CubeMesh" id=32]
+size = Vector3( 3, 8, 7 )
+
+[sub_resource type="SpatialMaterial" id=33]
 albedo_color = Color( 0.717647, 0.109804, 0.109804, 1 )
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=34]
 albedo_color = Color( 0.717647, 0.109804, 0.109804, 1 )
 
-[sub_resource type="SphereMesh" id=15]
+[sub_resource type="SphereMesh" id=35]
 
-[sub_resource type="SpatialMaterial" id=16]
+[sub_resource type="SpatialMaterial" id=36]
 flags_unshaded = true
+
+[sub_resource type="SphereMesh" id=37]
 
 [node name="World" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2394, 0 )
@@ -70,7 +145,7 @@ script = ExtResource( 3 )
 environment = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -9.43491, 5.8591, -61.9966 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -160.216, 5.8591, -0.686251 )
 
 [node name="Drop" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5832, 0 )
@@ -84,12 +159,124 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="StaticBody" type="StaticBody" parent="LevelGeometry/Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.95132, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0 )
 collision_mask = 63
 
 [node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/Ground/StaticBody"]
 transform = Transform( 100, 0, 0, 0, 2, 0, 0, 0, 100, 0, 0, 0 )
 shape = SubResource( 5 )
+
+[node name="StaticBody2" type="StaticBody" parent="LevelGeometry/Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/Ground/StaticBody2"]
+transform = Transform( 100, 0, 0, 0, 2, 0, 0, 0, 100, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="BridgeFloor" type="MeshInstance" parent="LevelGeometry"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -149.989, -4, -0.089571 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelGeometry/BridgeFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.57121, 0 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/BridgeFloor/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
+shape = SubResource( 8 )
+
+[node name="BridgeFloor2" type="MeshInstance" parent="LevelGeometry"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, -150, 28.3188, 0 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 9 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelGeometry/BridgeFloor2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.95132, 0 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/BridgeFloor2/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="BridgeWall1" type="MeshInstance" parent="LevelGeometry"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -144.896, 13.9128, -50 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 12 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelGeometry/BridgeWall1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.79174, 0 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/BridgeWall1/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
+shape = SubResource( 13 )
+
+[node name="BridgeWall2" type="MeshInstance" parent="LevelGeometry"]
+transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, -149, 13.913, 50 )
+mesh = SubResource( 14 )
+material/0 = SubResource( 15 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelGeometry/BridgeWall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.607, 0 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/BridgeWall2/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
+shape = SubResource( 13 )
+
+[node name="BridgeWall3" type="MeshInstance" parent="LevelGeometry"]
+transform = Transform( -1.62921e-07, 0.707107, -0.707107, 0, -0.707107, -0.707107, -1, -1.15202e-07, 1.15202e-07, -188.359, 20.9428, -0.353508 )
+mesh = SubResource( 16 )
+material/0 = SubResource( 17 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelGeometry/BridgeWall3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.95132, 0 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/BridgeWall3/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 10, 0, 0, 0 )
+shape = SubResource( 13 )
+
+[node name="BridgeWall4" type="MeshInstance" parent="LevelGeometry"]
+transform = Transform( 4.88762e-07, 1, 1.62921e-07, 5.30863e-14, 1.62921e-07, -1, -1, 4.88762e-07, 2.65431e-14, -198.873, -46.2768, -0.353508 )
+mesh = SubResource( 18 )
+material/0 = SubResource( 19 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelGeometry/BridgeWall4"]
+transform = Transform( 1, 0, -3.38813e-21, 0, 1, 1.29733e-20, 0, 1.29734e-20, 1, 5.96046e-08, -1.92523, -7.62939e-06 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/BridgeWall4/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
+shape = SubResource( 20 )
+
+[node name="BridgeWall5" type="MeshInstance" parent="LevelGeometry"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -99.133, 16.0598, -40.1873 )
+mesh = SubResource( 21 )
+material/0 = SubResource( 22 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelGeometry/BridgeWall5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.95132, 0 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/BridgeWall5/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 2, -2.16221e-19, 4.33681e-19, -8.64891e-21, 50, 0, 2.87109, -7.62939e-06 )
+shape = SubResource( 23 )
+
+[node name="BridgeWall6" type="MeshInstance" parent="LevelGeometry"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -99.133, 16.0598, 40.1272 )
+mesh = SubResource( 21 )
+material/0 = SubResource( 22 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelGeometry/BridgeWall6"]
+transform = Transform( 1, 0, 0, 0, 1, -4.32443e-21, 0, -4.32445e-21, 1, 0, 0.938553, 0 )
+collision_mask = 63
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/BridgeWall6/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
+shape = SubResource( 24 )
 
 [node name="Props" type="Spatial" parent="LevelGeometry"]
 
@@ -100,11 +287,11 @@ mass = 2.04082
 gravity_scale = 3.0
 
 [node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/Props/Cube1"]
-shape = SubResource( 6 )
+shape = SubResource( 25 )
 
 [node name="MeshInstance" type="MeshInstance" parent="LevelGeometry/Props/Cube1"]
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 26 )
+material/0 = SubResource( 27 )
 
 [node name="Cube2" type="RigidBody" parent="LevelGeometry/Props"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57878, 0, 5.44533 )
@@ -112,11 +299,37 @@ mass = 2.85714
 gravity_scale = 3.0
 
 [node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/Props/Cube2"]
-shape = SubResource( 9 )
+shape = SubResource( 28 )
 
 [node name="MeshInstance" type="MeshInstance" parent="LevelGeometry/Props/Cube2"]
-mesh = SubResource( 10 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 29 )
+material/0 = SubResource( 30 )
+
+[node name="Cube5" type="RigidBody" parent="LevelGeometry/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -114.027, 0, 48.0787 )
+collision_mask = 31
+mass = 2.85714
+gravity_scale = 3.0
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/Props/Cube5"]
+shape = SubResource( 28 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LevelGeometry/Props/Cube5"]
+mesh = SubResource( 29 )
+material/0 = SubResource( 30 )
+
+[node name="Cube6" type="RigidBody" parent="LevelGeometry/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -117.81, 0, 48.0787 )
+collision_mask = 15
+mass = 2.85714
+gravity_scale = 3.0
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/Props/Cube6"]
+shape = SubResource( 38 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LevelGeometry/Props/Cube6"]
+mesh = SubResource( 29 )
+material/0 = SubResource( 30 )
 
 [node name="Cube3" type="RigidBody" parent="LevelGeometry/Props"]
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -13.8038, 0, -28.6414 )
@@ -124,11 +337,11 @@ mass = 5.10204
 gravity_scale = 3.0
 
 [node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/Props/Cube3"]
-shape = SubResource( 12 )
+shape = SubResource( 31 )
 
 [node name="MeshInstance" type="MeshInstance" parent="LevelGeometry/Props/Cube3"]
-mesh = SubResource( 13 )
-material/0 = SubResource( 17 )
+mesh = SubResource( 32 )
+material/0 = SubResource( 33 )
 
 [node name="Cube4" type="RigidBody" parent="LevelGeometry/Props"]
 transform = Transform( 0.230278, -0.973095, 0.0076914, 0.972552, 0.230406, 0.0324838, -0.0333819, 0, 0.999443, -29.898, -9.53674e-07, -7.3025 )
@@ -136,11 +349,202 @@ mass = 5.10204
 gravity_scale = 3.0
 
 [node name="CollisionShape" type="CollisionShape" parent="LevelGeometry/Props/Cube4"]
-shape = SubResource( 12 )
+shape = SubResource( 31 )
 
 [node name="MeshInstance" type="MeshInstance" parent="LevelGeometry/Props/Cube4"]
-mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
+mesh = SubResource( 32 )
+material/0 = SubResource( 34 )
+
+[node name="Computer" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.451, 0.284584, -29.9437 )
+mode = 1
+object_type = 0
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Computer2" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.451, 0.284584, 41.0824 )
+mode = 1
+object_type = 0
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Computer3" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.451, 0.284584, 28.6724 )
+mode = 1
+object_type = 1
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Computer4" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.451, 0.284584, 13.3703 )
+mode = 1
+object_type = 2
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Computer5" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -179.451, 0.284584, -18.776 )
+mode = 1
+object_type = 3
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Barrel" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -136.186, -1.62811, -21.7239 )
+object_type = 4
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Barrel2" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -126.066, -1.62811, -21.7239 )
+object_type = 4
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Barrel3" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -122.234, -1.62811, -21.7239 )
+object_type = 4
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Barrel4" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -118.546, -1.62811, -21.7239 )
+object_type = 4
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Barrel5" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -118.546, -1.62811, -30.4679 )
+object_type = 4
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Barrel6" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -112.357, -1.62811, -23.2108 )
+object_type = 4
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Barrel7" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -133.544, -1.62811, 25.3276 )
+object_type = 5
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Desk" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -152.685, -1.62811, 25.3276 )
+object_type = 6
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Machine" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -152.685, -1.62811, -16.4477 )
+object_type = 7
+LightSource = false
+LightBrightness = 3.0
+LightRadius = 0.0
+LightColor = Color( 0, 0, 0, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Machine2" parent="LevelGeometry/Props" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -146.982, 1.09009, 34.8842 )
+gravity_scale = 0.0
+object_type = 8
+LightSource = true
+LightBrightness = 10.0
+LightRadius = 50.0
+LightColor = Color( 0.0156863, 0.996078, 0.94902, 1 )
+EmitSound = false
+SoundEmission = 0
+SoundLevel = 0.0
+LoopSound = false
+
+[node name="Sprite3D" type="Sprite3D" parent="LevelGeometry"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -131.691, 5.44815, 49.819 )
+pixel_size = 0.02
+texture = ExtResource( 7 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3782, 0 )
@@ -151,5 +555,17 @@ omni_shadow_mode = 0
 
 [node name="MeshInstance" type="MeshInstance" parent="OmniLight"]
 visible = false
-mesh = SubResource( 15 )
-material/0 = SubResource( 16 )
+mesh = SubResource( 35 )
+material/0 = SubResource( 36 )
+
+[node name="OmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -137.753, 28.3648, 0 )
+light_color = Color( 0.372549, 0.917647, 0.988235, 1 )
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 60.0
+omni_shadow_mode = 0
+
+[node name="MeshInstance" type="MeshInstance" parent="OmniLight2"]
+mesh = SubResource( 37 )
+material/0 = null

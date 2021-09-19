@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/metal_small_2.ogg-07868298c0505ff97853b8f57bcff8ea.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/ui/metal_small_2.ogg"
+dest_files=[ "res://.import/metal_small_2.ogg-07868298c0505ff97853b8f57bcff8ea.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

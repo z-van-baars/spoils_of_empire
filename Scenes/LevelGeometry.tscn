@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/LevelGeometry.gd" type="Script" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 5.9, 5.6 )
+
+[sub_resource type="SpatialMaterial" id=2]
+uv1_scale = Vector3( 0, 0, 0 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2.95, 0.1, 2.8 )
+
+[node name="Spatial" type="MeshInstance"]
+transform = Transform( 0.839506, 0.54335, 0, -0.54335, 0.839506, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+script = ExtResource( 1 )
+editorWidth = 5.9
+editorHeight = 5.6
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 3 )

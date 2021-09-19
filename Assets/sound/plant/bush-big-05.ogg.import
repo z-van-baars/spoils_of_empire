@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bush-big-05.ogg-867c3346021c0ef59cbf688e6ae92f01.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/plant/bush-big-05.ogg"
+dest_files=[ "res://.import/bush-big-05.ogg-867c3346021c0ef59cbf688e6ae92f01.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

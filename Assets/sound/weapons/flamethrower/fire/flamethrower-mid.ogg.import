@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/flamethrower-mid.ogg-756eee7c4a2b42ec20e44eaa972a4511.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/weapons/flamethrower/fire/flamethrower-mid.ogg"
+dest_files=[ "res://.import/flamethrower-mid.ogg-756eee7c4a2b42ec20e44eaa972a4511.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

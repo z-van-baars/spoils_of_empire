@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/transport-belt.ogg-b7e5b085a7ede4254c309e83a411c9da.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/emission/transport-belt.ogg"
+dest_files=[ "res://.import/transport-belt.ogg-b7e5b085a7ede4254c309e83a411c9da.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

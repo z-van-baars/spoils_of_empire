@@ -1,58 +1,70 @@
 extends KinematicBody
 
 const GRAVITY = -24.8
-var vel = Vector3()
-const MAX_SPEED = 12
-const JUMP_SPEED = 12
+const MAX_SPEED = 20
+const JUMP_SPEED = 16
 const ACCEL = 16
-
+const DEACCEL = 16
+const MAX_SLOPE_ANGLE = 40
+var vel = Vector3()
 var dir = Vector3()
 var shooting = false
-
-const DEACCEL= 16
-const MAX_SLOPE_ANGLE = 40
 
 var camera
 var rotation_helper
 
 var MOUSE_SENSITIVITY = 0.1
-
-onready var anim_player = $AnimationPlayer
-onready var weapon_sprite = $CanvasLayer/Control/BolterSprite
-onready var raycast = $RotationHelper/RayCast
+# ----------------------------------
+# Animation Stuff
+onready var weapon_sprite = $RotationHelper/WeaponArmature/WeaponSprite
+onready var weapon_animator = $RotationHelper/WeaponArmature/WeaponAnimationPlayer
 onready var world_node = get_tree().root.get_node("World")
+
 onready var weapon_slot = 0
-onready var weapons = [
-	Weapons.WeaponTypes.Bolter,
-	Weapons.WeaponTypes.Shotgun,
-	Weapons.WeaponTypes.Axe
+
+onready var weapons_all = [
+	Weapons.Wpn.Bolter,
+	Weapons.Wpn.PlasmaRifle,
+	Weapons.Wpn.PistolA,
+	Weapons.Wpn.PistolB,
+	Weapons.Wpn.SmgA,
+	Weapons.Wpn.SmgB,
+	Weapons.Wpn.AlienSmgA,
+	Weapons.Wpn.AlienSmgB,
+	Weapons.Wpn.AlienSmgC,
+	Weapons.Wpn.PulseRifle,
+	Weapons.Wpn.CombatShotgun,
+	Weapons.Wpn.AK47,
+	Weapons.Wpn.FlameThrower,
+	Weapons.Wpn.MeltaGun,
+	Weapons.Wpn.PlasmaCannon,
+	Weapons.Wpn.Axe
 	]
 
-onready var sounds = {
-	"bolter_fire" : [
-		$SoundPlayers/BolterFire1,
-		$SoundPlayers/BolterFire2,
-		$SoundPlayers/BolterFire3],
-	"shotgun_fire" : [
-		$SoundPlayers/ShotgunFire1,
-		$SoundPlayers/ShotgunFire2,
-		$SoundPlayers/ShotgunFire3],
-	"axe_swing" : [
-		$SoundPlayers/AxeSwing1,
-		$SoundPlayers/AxeSwing2,
-		$SoundPlayers/AxeSwing3],
-	"corn pickup": [$SoundPlayers/DropPickup]
-}
+onready var weapons = [
 
+
+	Weapons.Wpn.PistolA,
+	Weapons.Wpn.CombatShotgun,
+	Weapons.Wpn.SmgB,
+	Weapons.Wpn.AK47,
+	Weapons.Wpn.PlasmaRifle,
+	Weapons.Wpn.PulseRifle,
+	Weapons.Wpn.FlameThrower,
+	Weapons.Wpn.Axe
+	]
+onready var audio_player = $SoundPlayers/AudioStreamPlayer
+onready var ammo  = []
 
 func _ready():
+	
 	# yield(get_tree(), "idle_frame")
 	get_tree().call_group("creatures", "set_player", self)
-	anim_player.seek(0)
 	camera = $RotationHelper/Camera
 	rotation_helper = $RotationHelper
+	set_initial_weapon_ammo()
+	activate_weapon()
 	
-
 	var aim_point_pos = $RotationHelper/WeaponAimPoint.global_transform.origin
 	for weapon_node in [
 		$RotationHelper/GunFirePoints/HitscanPoint,
@@ -64,36 +76,45 @@ func _ready():
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+
+func set_initial_weapon_ammo():
+	for each in weapons:
+		ammo.append(Weapons.get_clip_size(each))
+
 func _physics_process(delta):
 	process_input(delta)
 	process_movement(delta)
 	process_weapons(delta)
 
 func process_weapons(delta):
-	if !shooting:
+	if !shooting or weapon_animator.is_playing():
 		return
-	match weapons[weapon_slot]:
-		Weapons.WeaponTypes.Bolter:
-			if weapon_sprite.is_playing():
-				return
-			weapon_sprite.play(Weapons.weapon_names[weapon_slot] + "attack")
-			weapon_sprite.set_frame(0)
-			Tools.r_choice(sounds["bolter_fire"]).play()
+	if ammo[weapon_slot] == 0:
+		return
+		#swap these once we have dryfire
+		# Tools.r_choice(sounds["dryfire"][weapons[weapon_slot]]).play()
+		
+	match Weapons.get_munition_type(weapons[weapon_slot]):
+		Weapons.Munition.Projectile:
+			audio_player.set_stream(Weapons.get_fire_sound(weapons[weapon_slot]))
+			audio_player.play()
+
 			$RotationHelper/GunFirePoints/ProjectilePoint.fire()
-		Weapons.WeaponTypes.Shotgun:
-			if weapon_sprite.is_playing():
-				return
-			weapon_sprite.play(Weapons.weapon_names[weapon_slot] + "attack")
-			weapon_sprite.set_frame(0)
-			Tools.r_choice(sounds["bolter_fire"]).play()
+			ammo[weapon_slot] = max(ammo[weapon_slot] - 1, 0)
+			update_ammo_counter()
+		Weapons.Munition.Hitscan:
+			weapon_animator.play()
+			audio_player.set_stream(Weapons.get_fire_sound(weapons[weapon_slot]))
+			audio_player.play()
 			$RotationHelper/GunFirePoints/HitscanPoint.fire()
-			shooting = false
-		Weapons.WeaponTypes.Axe:
-			if anim_player.is_playing():
-				return
-			anim_player.play("axe swing")
-			$MeleeTimer.start(0.05)
-			shooting = false
+			ammo[weapon_slot] = max(ammo[weapon_slot] - 1, 0)
+			update_ammo_counter()
+		Weapons.Munition.Melee:
+			audio_player.set_stream(Weapons.get_swing_sound(weapons[weapon_slot]))
+			audio_player.play()
+			$MeleeTimer.start(Weapons.get_attack_speed(weapons[weapon_slot]))
+	shooting = Weapons.is_continuous_fire(weapons[weapon_slot])
+	weapon_animator.play()
 
 func process_input(delta):
 
@@ -129,15 +150,6 @@ func process_input(delta):
 			vel.y = JUMP_SPEED
 	# ----------------------------------
 
-	# ----------------------------------
-	# Capturing/Freeing the cursor
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	# ----------------------------------
-
 func process_movement(delta):
 	dir.y = 0
 	dir = dir.normalized()
@@ -163,9 +175,13 @@ func process_movement(delta):
 
 func _input(event):
 	if event.is_action_pressed("exit"):
-		get_tree().quit()
-	elif event.is_action_pressed("restart"):
-		kill()
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	elif event.is_action_pressed("reload"):
+		ammo[weapon_slot] = Weapons.get_clip_size(weapons[weapon_slot])
+		update_ammo_counter()
 	elif event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		# I needed to invert this to get look-up / look-down to work
 		# but it doesn't mention it in the tutorial
@@ -177,7 +193,6 @@ func _input(event):
 		rotation_helper.rotation_degrees = camera_rot
 	elif event.is_action_pressed("shoot"):
 		shooting = true
-		print("shootah")
 	elif event.is_action_released("shoot"):
 		shooting = false
 
@@ -193,53 +208,71 @@ func cycle_weapon():
 	activate_weapon()
 
 func _on_Drop_pickup(drop):
-	Tools.r_choice(sounds[drop.get_drop_name() + " pickup"]).play()
+	audio_player.set_stream(load("res://Assets/sound/effects/notify.ogg"))
+
+func update_weapon_portrait():
+
+	var portrait = $CanvasLayer/HUD/LeftHandPortrait/Panel
+	portrait.get_node("WeaponSprite").texture = Weapons.get_texture(weapons[weapon_slot])
+
+func update_ammo_counter():
+	var portrait = $CanvasLayer/HUD/LeftHandPortrait/Panel
+	portrait.get_node("AmmoCounter").text = str(ammo[weapon_slot])
+	portrait.get_node("AmmoCounter").show()
+	if ammo[weapon_slot] == -1:
+		portrait.get_node("AmmoCounter").hide()
+	
 
 func activate_weapon():
-	hide_weapons()
-	match get_weapon():
-		Weapons.WeaponTypes.Bolter:
-			bolter_swap()
-		Weapons.WeaponTypes.Shotgun:
-			shotgun_swap()
-		Weapons.WeaponTypes.Axe:
-			axe_swap()
+	weapon_sprite.flip_h = false
+	weapon_sprite.texture = Weapons.get_texture(weapons[weapon_slot])
+	activate_hardpoint()
+	if (Weapons.get_weapon_type(weapons[weapon_slot]) == Weapons.WeaponTypes.Melee or
+		Weapons.get_weapon_type(weapons[weapon_slot]) == Weapons.WeaponTypes.Thrown):
+		weapon_sprite.flip_h = true
+		weapon_animator.play(
+			Weapons.get_animation_prefix_string(weapons[weapon_slot]) +
+			"_swing")
+	else:
+		weapon_animator.play(
+			Weapons.get_animation_prefix_string(weapons[weapon_slot]) +
+			"_fire")
+	weapon_animator.seek(0, true)
+	weapon_animator.stop()
+	update_weapon_portrait()
+	update_ammo_counter()
 
-func hide_weapons():
-	$CanvasLayer/Control/AxeSprite.hide()
-	$CanvasLayer/Control/ShotgunSprite.hide()
-	$CanvasLayer/Control/BolterSprite.hide()
+func hide_weapon():
+	$RotationHelper/WeaponArmature/WeaponSprite.hide()
 
+func draw_weapon():
+	$RotationHelper/WeaponArmature/WeaponSprite.show()
 
-func bolter_swap():
-	$CanvasLayer/Control/BolterSprite.show()
-	weapon_sprite = $CanvasLayer/Control/BolterSprite
-
-func shotgun_swap():
-	$CanvasLayer/Control/ShotgunSprite.show()
-	weapon_sprite = $CanvasLayer/Control/ShotgunSprite
-	
-func axe_swap():
-	$CanvasLayer/Control/AxeSprite.show()
-	weapon_sprite = $CanvasLayer/Control/BolterSprite
-
-
+func activate_hardpoint():
+	$RotationHelper/WeaponArmature/WeaponSprite/OmniLight.visible = true
+	if Weapons.get_munition_type(weapons[weapon_slot]) == Weapons.Munition.Projectile:
+		$RotationHelper/GunFirePoints/ProjectilePoint.load_weapon(weapons[weapon_slot])
+	elif Weapons.get_munition_type(weapons[weapon_slot]) == Weapons.Munition.Hitscan:
+		$RotationHelper/GunFirePoints/HitscanPoint.load_weapon(weapons[weapon_slot])
+	else:
+		$RotationHelper/WeaponArmature/WeaponSprite/OmniLight.visible = false
+		$RotationHelper/GunFirePoints/MeleePoint.load_weapon(weapons[weapon_slot])
 
 func kill():
 	print("Player Was Killed!")
 	get_tree().reload_current_scene()
 
 
-func _on_AnimatedSprite_animation_finished():
-	weapon_sprite.set_frame(0)
-	weapon_sprite.stop()
-
-
 func _on_MeleeTimer_timeout():
 	$RotationHelper/GunFirePoints/MeleePoint.fire()
 
+func _on_Melee_weapon_impact():
+	audio_player.set_stream(Weapons.get_impact_sound(weapons[weapon_slot]))
+	audio_player.play()
 
-
-func _on_WeaponSprite_animation_finished():
-	weapon_sprite.set_frame(0)
-	weapon_sprite.stop()
+func _on_WeaponAnimationPlayer_animation_finished(anim_name):
+	return
+	if !shooting:
+		weapon_animator.stop()
+		return
+	weapon_animator.play()

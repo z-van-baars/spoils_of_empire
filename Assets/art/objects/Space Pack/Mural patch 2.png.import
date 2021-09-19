@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Mural patch 2.png-a1cef133c6a1bf51f1ffc9dd090d87f8.s3tc.stex"
+path.etc2="res://.import/Mural patch 2.png-a1cef133c6a1bf51f1ffc9dd090d87f8.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Assets/art/objects/Space Pack/Mural patch 2.png"
+dest_files=[ "res://.import/Mural patch 2.png-a1cef133c6a1bf51f1ffc9dd090d87f8.s3tc.stex", "res://.import/Mural patch 2.png-a1cef133c6a1bf51f1ffc9dd090d87f8.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=false
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

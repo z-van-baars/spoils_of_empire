@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/handleSmallLeather2.ogg-57f5ac4d29759dde3237661a46925640.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/ui/handleSmallLeather2.ogg"
+dest_files=[ "res://.import/handleSmallLeather2.ogg-57f5ac4d29759dde3237661a46925640.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

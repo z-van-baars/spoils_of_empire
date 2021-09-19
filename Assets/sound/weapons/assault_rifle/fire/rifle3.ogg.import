@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rifle3.ogg-7cb6d73552b6f2cf93273e8ca828d749.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/weapons/assault_rifle/fire/rifle3.ogg"
+dest_files=[ "res://.import/rifle3.ogg-7cb6d73552b6f2cf93273e8ca828d749.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

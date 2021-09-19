@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bush-big-03.ogg-c5d71565f7679b375aeebb5935a24725.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/plant/bush-big-03.ogg"
+dest_files=[ "res://.import/bush-big-03.ogg-c5d71565f7679b375aeebb5935a24725.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

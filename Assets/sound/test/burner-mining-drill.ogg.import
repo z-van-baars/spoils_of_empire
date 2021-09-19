@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/burner-mining-drill.ogg-891e9b808e28b8c1e740252d1a7bdf05.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/test/burner-mining-drill.ogg"
+dest_files=[ "res://.import/burner-mining-drill.ogg-891e9b808e28b8c1e740252d1a7bdf05.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -6,10 +6,15 @@ onready var particle_scn = preload("res://Scenes/Particle.tscn")
 
 func _ready():
 	$Drop._ready()
+	$Player._ready()
+	# OS.set_window_maximized(true)
 	# generate_starfield()
 
 func is_player(entity):
 	return entity == player
+
+func get_player_pos():
+	return player.translation
 
 func _on_Entity_new_drop(drop_type):
 	var new_drop = corn_drop.instance()

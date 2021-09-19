@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/car-stone-impact-3.ogg-f158abe4529f036f537ea3afa5af4c26.oggstr"
+
+[deps]
+
+source_file="res://Assets/sound/impacts/car-stone-impact-3.ogg"
+dest_files=[ "res://.import/car-stone-impact-3.ogg-f158abe4529f036f537ea3afa5af4c26.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

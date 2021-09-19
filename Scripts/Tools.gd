@@ -303,6 +303,13 @@ func get_random_coordinates(super_array, number_of_coordinates):
 				break
 	return random_coordinates
 
+func get_random_coords(min_x, min_y, max_x, max_y, as_float=null):
+	if not as_float:
+		return Vector2(rng.rand_range(min_x, max_x),
+					   rng.rand_range(min_y, max_y))
+	return Vector2(rng.randf_range(min_x, max_x),
+				   rng.randf_range(min_y, max_y))
+
 
 func list_files_in_directory(path):
 	var files = []
